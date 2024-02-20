@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext, useContext } from "react";
 
 const GlobalContext = createContext();
@@ -148,14 +148,21 @@ const AppContext = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const baseURL = "http://localhost:3000";
         const f2fetchedData = [];
         const f3fetchedData = [];
 
         // fetch floor 2 data
         for (let i = 0; i < floor_2_zones.length; i++) {
-          const response = await fetch(`/zone_${floor_2_zones[i]}s`);
+          const response = await fetch(
+            `${baseURL}/zone_${floor_2_zones[i]}s`,
+            {}
+          );
+          console.log(response);
           const zone_data = await response.json();
           f2fetchedData.push(...zone_data);
+
+          console.log(response);
 
           // get occupied, vacant, damaged and reserved data in each floor 2 zones
           let occupied = zone_data.filter(
@@ -222,7 +229,7 @@ const AppContext = (props) => {
 
         // fetch floor 3 data
         for (let i = 0; i < floor_3_zones.length; i++) {
-          const response = await fetch(`/zone_${floor_3_zones[i]}s`);
+          const response = await fetch(`${baseURL}//zone_${floor_3_zones[i]}s`);
           const zone_data = await response.json();
           f3fetchedData.push(...zone_data);
 

@@ -61,7 +61,7 @@ const Navbar = () => {
         }
         setData((prevData) => [...prevData, ...fetchedData]);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
 
@@ -188,7 +188,6 @@ const Navbar = () => {
             </div>
 
             {/* Profile dropdown */}
-            
           </div>
         </div>
       </div>
