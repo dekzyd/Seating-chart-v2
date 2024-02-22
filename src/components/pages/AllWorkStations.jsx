@@ -3,6 +3,7 @@ import Table from "../Table";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../Context";
 import Loading from "../Loading";
+import Pagination from "@mui/material/Pagination";
 
 const zones = ["d", "e", "h", "i", "j", "k", "l", "m", "n", "q", "r"];
 const floor_2_zones = ["d", "e", "h", "i"];
@@ -73,7 +74,7 @@ const AllWorkStations = () => {
     currentPage * itemsPerPage
   );
 
-  const handlePageChange = (newPage) => {
+  const handlePageChange = (event, newPage) => {
     setCurrentPage(newPage);
   };
 
@@ -200,26 +201,17 @@ const AllWorkStations = () => {
       </div>
 
       <Table data={paginatedData} />
-      {/* <ul>
-        {Array.from({ length: totalPages }).map((_, index) => (
-          <li key={index + 1}>
-            <button onClick={() => handlePageChange(index + 1)}>
-              {index + 1}
-            </button>
-          </li>
-        ))}
-      </ul> */}
 
-      <div>
-        {Array.from({ length: totalPages }).map((_, index) => (
-          <button
-            key={index + 1}
-            className="join-item btn"
-            onClick={() => handlePageChange(index + 1)}
-          >
-            {index + 1}
-          </button>
-        ))}
+      <div className="flex justify-end">
+        <div className="my-8">
+          <Pagination
+            count={totalPages}
+            shape="rounded"
+            color="primary"
+            size="large"
+            onChange={handlePageChange}
+          />
+        </div>
       </div>
     </div>
   );

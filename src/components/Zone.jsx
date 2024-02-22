@@ -13,7 +13,7 @@ import N_ZoneChart from "./zone charts/N/N_ZoneChart";
 import Q_ZoneChart from "./zone charts/Q/Q_ZoneChart";
 import R_ZoneChart from "./zone charts/R/R_ZoneChart";
 import { useGlobalContext } from "./Context";
-import PaginationRounded from "./pagination";
+import Pagination from "@mui/material/Pagination";
 
 const Zone = () => {
   const { data, loading, setActiveSideNav, floor_3_zones } = useGlobalContext();
@@ -105,7 +105,7 @@ const Zone = () => {
     currentPage * itemsPerPage
   );
 
-  const handlePageChange = (newPage) => {
+  const handlePageChange = (event, newPage) => {
     setCurrentPage(newPage);
   };
 
@@ -219,20 +219,15 @@ const Zone = () => {
       </div>
       <Table data={paginatedData} />
 
-      {/* <div>
-        {Array.from({ length: totalPages }).map((_, index) => (
-          <button
-            key={index + 1}
-            className="join-item btn"
-            onClick={() => handlePageChange(index + 1)}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div> */}
       <div className="flex justify-end">
         <div className="my-8">
-          <PaginationRounded length={totalPages} />
+          <Pagination
+            count={totalPages}
+            shape="rounded"
+            color="primary"
+            size="large"
+            onChange={handlePageChange}
+          />
         </div>
       </div>
     </div>

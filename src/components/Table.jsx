@@ -30,7 +30,7 @@ const Table = ({ data }) => {
             return (
               <tr
                 key={`${first_char}_${id}`}
-                className="border-b hover:bg-sky-100"
+                className="border-b hover:bg-sky-100 "
                 // show desk id
                 onClick={() => {
                   navigate(`/edit/zone_${first_char}s/${id}`);
