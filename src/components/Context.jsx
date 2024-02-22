@@ -11,6 +11,7 @@ const floor_3_zones = ["j", "k", "l", "m", "n", "q", "r"];
 export const useGlobalContext = () => useContext(GlobalContext);
 
 const AppContext = (props) => {
+  const baseURL = "http://localhost:3000";
   const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(true);
   const [current_user, setCurrent_user] = useState("");
@@ -130,25 +131,9 @@ const AppContext = (props) => {
   const acceptedDevReserved = ["reserved (dev)", "reserved dev"];
   const acceptedOpsReserved = ["reserved (ops)", "reserved ops"];
 
-  // useEffect(() => {
-  //   // Access the DOM element with the "app" ID
-  //   const appElement = document.getElementById("app");
-
-  //   // Get "current user"
-  //   const user_details = appElement.getAttribute("data-auth");
-
-  //   if (user_details !== null) {
-  //     // convert from JSON to object
-  //     setCurrent_user(JSON.parse(user_details));
-  //   } else {
-  //     console.log("User details is null");
-  //   }
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const baseURL = "http://localhost:3000";
         const f2fetchedData = [];
         const f3fetchedData = [];
 
@@ -158,11 +143,8 @@ const AppContext = (props) => {
             `${baseURL}/zone_${floor_2_zones[i]}s`,
             {}
           );
-          console.log(response);
           const zone_data = await response.json();
           f2fetchedData.push(...zone_data);
-
-          console.log(response);
 
           // get occupied, vacant, damaged and reserved data in each floor 2 zones
           let occupied = zone_data.filter(
@@ -201,6 +183,7 @@ const AppContext = (props) => {
             },
           }));
         }
+
         // get occupied, vacant, damaged and reserved data in floor 2
         let occupied = f2fetchedData.filter(
           (desk) => desk.status.toLowerCase() === "occupied"
@@ -229,7 +212,7 @@ const AppContext = (props) => {
 
         // fetch floor 3 data
         for (let i = 0; i < floor_3_zones.length; i++) {
-          const response = await fetch(`${baseURL}//zone_${floor_3_zones[i]}s`);
+          const response = await fetch(`${baseURL}/zone_${floor_3_zones[i]}s`);
           const zone_data = await response.json();
           f3fetchedData.push(...zone_data);
 
@@ -327,6 +310,7 @@ const AppContext = (props) => {
         acceptedDevReserved,
         acceptedItReserved,
         acceptedOpsReserved,
+        baseURL,
       }}
     >
       {props.children}

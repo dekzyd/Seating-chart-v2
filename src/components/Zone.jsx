@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Table from "./Table";
 import D_ZoneChart from "./zone charts/D/D_ZoneChart";
@@ -13,6 +13,7 @@ import N_ZoneChart from "./zone charts/N/N_ZoneChart";
 import Q_ZoneChart from "./zone charts/Q/Q_ZoneChart";
 import R_ZoneChart from "./zone charts/R/R_ZoneChart";
 import { useGlobalContext } from "./Context";
+import PaginationRounded from "./pagination";
 
 const Zone = () => {
   const { data, loading, setActiveSideNav, floor_3_zones } = useGlobalContext();
@@ -23,6 +24,7 @@ const Zone = () => {
     damaged: false,
     filtered: false,
   });
+  const [currentPage, setCurrentPage] = useState(1);
 
   const zone_id_array = zone_name.split("");
   const zone_id = zone_id_array[zone_id_array.length - 2];
@@ -94,6 +96,19 @@ const Zone = () => {
     setActiveSideNav("zones");
   }, []);
 
+  // Pagination Logic
+  const itemsPerPage = 8;
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+  const paginatedData = filteredData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
   if (loading) {
     return (
       <div>
@@ -102,14 +117,16 @@ const Zone = () => {
     );
   }
   return (
-    <div className="">
+    <div className="relative">
       <p className="text-2xl font-bold text-center text-gray-600">
         Floor {floor_3_zones.includes(zone_id) ? "3" : "2"} || Zone{" "}
         {zone_id.toUpperCase()}
       </p>
+
       {/* show seating chart */}
       <div className="mb-12">{chartComponent}</div>
 
+      {/* Filter */}
       <div className="flex justify-end text-gray-600">
         <div className="flex flex-col place-items-center">
           <i className=" font-bold">Filter Result</i>
@@ -200,7 +217,24 @@ const Zone = () => {
           </fieldset>
         </div>
       </div>
-      <Table data={filteredData} />
+      <Table data={paginatedData} />
+
+      {/* <div>
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <button
+            key={index + 1}
+            className="join-item btn"
+            onClick={() => handlePageChange(index + 1)}
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div> */}
+      <div className="flex justify-end">
+        <div className="my-8">
+          <PaginationRounded length={totalPages} />
+        </div>
+      </div>
     </div>
   );
 };

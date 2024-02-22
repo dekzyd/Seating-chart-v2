@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import React from "react";
 import { useGlobalContext } from "../Context";
 import Loading from "../Loading";
 import DeskSVG from "../DeskSVG";
@@ -10,7 +9,6 @@ const Show = () => {
   const { zone, id } = useParams();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const url = `/${zone}/${id}.json`;
   const {
     setRefresh,
     refresh,
@@ -18,7 +16,10 @@ const Show = () => {
     acceptedDevReserved,
     acceptedItReserved,
     acceptedOpsReserved,
+    baseURL,
   } = useGlobalContext();
+
+  const url = `${baseURL}/${zone}/${id}.json`;
 
   let zone_name = zone.slice(0, -1);
   // console.log(zone_name.charAt(5));
@@ -152,6 +153,10 @@ const Show = () => {
             }
             onChange={(e) => {
               console.log(e.target.value);
+              // if (e.target.value.toLowerCase() == "vacant") {
+              //   setData({ ...data, status: e.target.value.toLowerCase() });
+              //   setData({ ...data, campaign: '' });
+              // }
               setData({ ...data, status: e.target.value.toLowerCase() });
             }}
             className="mb-5 bg-gray-50 border border-sky-300 text-gray-500 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-1/3 p-2.5 mx-auto focus:outline-none "

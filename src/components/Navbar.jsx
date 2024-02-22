@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "./Context";
 import logo from "../images/newlogo.png";
@@ -6,13 +6,14 @@ import logo from "../images/newlogo.png";
 const zones = ["d", "e", "h", "i", "j", "k", "l", "m", "n", "q", "r"];
 
 const Navbar = () => {
-  const { current_user, searchedDesk, setSearchedDesk } = useGlobalContext();
+  const { setSearchedDesk } = useGlobalContext();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
   const [show, setShow] = useState(false);
   const dropdownRef = useRef(null);
   const searchfieldRef = useRef(null);
+  const baseURL = "http://localhost:3000";
 
   const handleSearchChange = (e) => {
     setQuery(e.target.value);
@@ -55,13 +56,13 @@ const Navbar = () => {
         const fetchedData = [];
 
         for (let i = 0; i < zones.length; i++) {
-          const response = await fetch(`/zone_${zones[i]}s`);
+          const response = await fetch(`${baseURL}/zone_${zones[i]}s`);
           const zone_data = await response.json();
           fetchedData.push(...zone_data);
         }
         setData((prevData) => [...prevData, ...fetchedData]);
       } catch (error) {
-        // console.log(error);
+        console.log(error);
       }
     };
 
@@ -122,7 +123,7 @@ const Navbar = () => {
                 })
                 .map((desk, index) => (
                   <div
-                    className="py-2 px-4 border-slate-300 text-gray-700 hover:bg-sky-200"
+                    className="py-2 px-4 border-slate-300 text-gray-700 hover:bg-sky-100"
                     key={index}
                   >
                     <Link

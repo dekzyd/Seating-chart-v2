@@ -1,4 +1,3 @@
-import React from "react";
 import DeskSVG from "./DeskSVG";
 
 const Desk_icon = ({ status, searchedDesk }) => {

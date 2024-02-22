@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Sidenav from "../Sidenav";
 import Navbar from "../Navbar";
 import background from "../../images/background.png";

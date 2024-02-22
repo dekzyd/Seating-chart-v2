@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Table from "../Table";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../Context";
@@ -9,7 +9,7 @@ const floor_2_zones = ["d", "e", "h", "i"];
 const floor_3_zones = ["j", "k", "l", "m", "n", "q", "r"];
 
 const AllWorkStations = () => {
-  const {} = useGlobalContext();
+  const { baseURL } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
@@ -19,6 +19,7 @@ const AllWorkStations = () => {
     reserved: false,
   });
   const { floor } = useParams();
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredData = data.filter((desk) => {
     // No filters selected, show all
@@ -63,13 +64,26 @@ const AllWorkStations = () => {
   const zone_array =
     floor[2] === "2" ? floor_2_zones : floor[2] === "3" ? floor_3_zones : zones;
 
+  // Pagination Logic
+  const itemsPerPage = 8;
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+  const paginatedData = filteredData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const fetchedData = [];
 
         for (let i = 0; i < zone_array.length; i++) {
-          const response = await fetch(`/zone_${zone_array[i]}s`);
+          const response = await fetch(`${baseURL}/zone_${zone_array[i]}s`);
           const zone_data = await response.json();
           fetchedData.push(...zone_data);
         }
@@ -185,7 +199,28 @@ const AllWorkStations = () => {
         </fieldset>
       </div>
 
-      <Table data={filteredData} />
+      <Table data={paginatedData} />
+      {/* <ul>
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <li key={index + 1}>
+            <button onClick={() => handlePageChange(index + 1)}>
+              {index + 1}
+            </button>
+          </li>
+        ))}
+      </ul> */}
+
+      <div>
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <button
+            key={index + 1}
+            className="join-item btn"
+            onClick={() => handlePageChange(index + 1)}
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,17 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useGlobalContext } from "./Context";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import DeskSVG from "./DeskSVG";
+import { useNavigate } from "react-router-dom";
 
 const Table = ({ data }) => {
-  const { current_user } = useGlobalContext();
-  const navigate = useNavigate();
-
   const acceptedItReserved = ["reserved (it)", "reserved it"];
   const acceptedDevReserved = ["reserved (dev)", "reserved dev"];
   const acceptedOpsReserved = ["reserved (ops)", "reserved ops"];
+  const navigate = useNavigate();
 
   return (
     <div className="relative overflow-x-auto">
@@ -27,9 +21,6 @@ const Table = ({ data }) => {
             <th scope="col" className="px-6 py-3 text-center">
               Campaign
             </th>
-            <th scope="col" className="px-6 py-3 text-center">
-              Action
-            </th>
           </tr>
         </thead>
         <tbody>
@@ -37,7 +28,14 @@ const Table = ({ data }) => {
             const { desk_id, status, campaign, id } = desk;
             const first_char = desk_id.charAt(0).toLowerCase();
             return (
-              <tr key={`${first_char}_${id}`} className="border-b">
+              <tr
+                key={`${first_char}_${id}`}
+                className="border-b hover:bg-sky-100"
+                // show desk id
+                onClick={() => {
+                  navigate(`/edit/zone_${first_char}s/${id}`);
+                }}
+              >
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center"
@@ -74,18 +72,6 @@ const Table = ({ data }) => {
                   </span>
                 </td>
                 <td className="px-6 py-4 text-center">{campaign}</td>
-                <td
-                  className="px-6 py-4 text-sky-700 font-medium text-center"
-                  onClick={() => {
-                    if (current_user?.admin !== undefined) {
-                      navigate(`/edit/zone_${first_char}s/${id}`);
-                    } else {
-                      toast.error("Login as Admin to Edit");
-                    }
-                  }}
-                >
-                  <Link>EDIT</Link>
-                </td>
               </tr>
             );
           })}

@@ -1,4 +1,3 @@
-import React from "react";
 import Desk_icon from "./Desk_icon";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "./Context";
@@ -12,12 +11,16 @@ const Desk = ({ data, style }) => {
   return (
     <div
       className="desk mb-[-6px] cursor-pointer hover:font-bold"
+      // onClick={() => {
+      //   if (current_user?.admin !== undefined) {
+      //     navigate(`/edit/zone_${first_char}s/${id}`);
+      //   } else {
+      //     toast.error("Login as Admin to Edit");
+      //   }
+      // }}
+
       onClick={() => {
-        if (current_user?.admin !== undefined) {
-          navigate(`/edit/zone_${first_char}s/${id}`);
-        } else {
-          toast.error("Login as Admin to Edit");
-        }
+        navigate(`/edit/zone_${first_char}s/${id}`);
       }}
     >
       {searchedDesk === desk_id ? (
