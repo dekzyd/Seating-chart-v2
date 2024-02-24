@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Zones from "./components/pages/ZonesPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/pages/Home";
@@ -12,14 +12,14 @@ import Floor3 from "./components/pages/Floor3";
 import Signout from "./components/pages/Signout";
 import Error from "./components/pages/Error";
 import Show from "./components/pages/Show";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // reload on resize
 let prevWidth = window.innerWidth;
 let prevHeight = window.innerHeight;
 
-window.onresize = function (event) {
+window.onresize = function (e) {
   if (window.innerWidth < prevWidth || window.innerHeight < prevHeight) {
     location.reload();
   }

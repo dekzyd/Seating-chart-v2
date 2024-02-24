@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../Loading";
 import {
@@ -37,6 +37,7 @@ const Home = () => {
     datasets: [
       {
         label: "Damaged",
+        // eslint-disable-next-line no-sparse-arrays
         data: [
           ,
           data.floor_2.zones.d.damaged,
@@ -52,6 +53,7 @@ const Home = () => {
       },
       {
         label: "Vacant",
+        // eslint-disable-next-line no-sparse-arrays
         data: [
           ,
           data.floor_2.zones.d.vacant,

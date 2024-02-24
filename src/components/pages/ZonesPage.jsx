@@ -1,4 +1,3 @@
-import React from "react";
 import ZoneBox from "../ZoneBox";
 import { useGlobalContext } from "../Context";
 import { useEffect } from "react";
@@ -27,6 +26,10 @@ const Zones = () => {
         <ZoneBox zone="All Working Stations" />
       </div>
     </div>
+    // <div>
+    //   {zonesData &&
+    //     zonesData.map((asset) => <div key={asset.id}>{asset.id}</div>)}
+    // </div>
   );
 };
 

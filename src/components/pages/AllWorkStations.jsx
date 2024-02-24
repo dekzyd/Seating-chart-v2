@@ -10,7 +10,7 @@ const floor_2_zones = ["d", "e", "h", "i"];
 const floor_3_zones = ["j", "k", "l", "m", "n", "q", "r"];
 
 const AllWorkStations = () => {
-  const { baseURL } = useGlobalContext();
+  const { baseURL, zones_d } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
