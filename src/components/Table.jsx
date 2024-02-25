@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import DeskSVG from "./DeskSVG";
 import { useNavigate } from "react-router-dom";
 
@@ -25,7 +26,11 @@ const Table = ({ data }) => {
         </thead>
         <tbody>
           {data.map((desk, index) => {
-            const { desk_id, status, campaign, id } = desk;
+            const id = desk.id;
+            const status = desk.custom_fields["Workspace-Status"]?.value;
+            const campaign = desk.custom_fields["Campaign"]?.value;
+            const desk_id = desk.custom_fields["Workspace"]?.value;
+
             const first_char = desk_id.charAt(0).toLowerCase();
             return (
               <tr

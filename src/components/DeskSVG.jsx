@@ -1,4 +1,3 @@
-import React from "react";
 import { useGlobalContext } from "./Context";
 
 const DeskSVG = ({ status, width, height }) => {
@@ -8,7 +7,7 @@ const DeskSVG = ({ status, width, height }) => {
 
   return (
     <div>
-      {status.toLowerCase() === "vacant" ? (
+      {status?.toLowerCase() === "vacant" ? (
         <svg
           fill="currentColor"
           className={`flex-shrink-0 text-green-600 transition duration-75 
@@ -35,15 +34,15 @@ const DeskSVG = ({ status, width, height }) => {
             height !== undefined ? height : "h-7"
           }
           ${
-            status.toLowerCase() === "occupied"
+            status?.toLowerCase() === "occupied"
               ? "text-[#FFA500]"
-              : status.toLowerCase() === "damaged"
+              : status?.toLowerCase() === "damaged"
               ? "text-red-600"
-              : acceptedItReserved.includes(status.toLowerCase())
+              : acceptedItReserved.includes(status?.toLowerCase())
               ? "text-blue-600"
-              : acceptedOpsReserved.includes(status.toLowerCase())
+              : acceptedOpsReserved.includes(status?.toLowerCase())
               ? "text-purple-500"
-              : acceptedDevReserved.includes(status.toLowerCase())
+              : acceptedDevReserved.includes(status?.toLowerCase())
               ? "text-[#964B00]"
               : "text-gray-100"
           }

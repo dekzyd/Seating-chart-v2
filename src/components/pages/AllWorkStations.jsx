@@ -4,13 +4,14 @@ import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../Context";
 import Loading from "../Loading";
 import Pagination from "@mui/material/Pagination";
+import axios from "axios";
 
 const zones = ["d", "e", "h", "i", "j", "k", "l", "m", "n", "q", "r"];
 const floor_2_zones = ["d", "e", "h", "i"];
 const floor_3_zones = ["j", "k", "l", "m", "n", "q", "r"];
 
 const AllWorkStations = () => {
-  const { baseURL, zones_d } = useGlobalContext();
+  const { zones_d } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
@@ -21,8 +22,9 @@ const AllWorkStations = () => {
   });
   const { floor } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
+  const baseURL = "http://localhost:4000/rows";
 
-  const filteredData = data.filter((desk) => {
+  const filteredData = data.filter((asset) => {
     // No filters selected, show all
     if (
       !filters.occupied &&
@@ -35,10 +37,19 @@ const AllWorkStations = () => {
 
     // Include filtered item in the filtered data
     if (
-      (filters.occupied && desk.status.toLowerCase() === "occupied") ||
-      (filters.vacant && desk.status.toLowerCase() === "vacant") ||
-      (filters.damaged && desk.status.toLowerCase() === "damaged") ||
-      (filters.reserved && desk.status.toLowerCase().includes("reserved"))
+      (filters.occupied &&
+        asset.custom_fields["Workspace-Status"]?.value.toLowerCase() ===
+          "occupied") ||
+      (filters.vacant &&
+        asset.custom_fields["Workspace-Status"]?.value.toLowerCase() ===
+          "vacant") ||
+      (filters.damaged &&
+        asset.custom_fields["Workspace-Status"]?.value.toLowerCase() ===
+          "damaged") ||
+      (filters.reserved &&
+        asset.custom_fields["Workspace-Status"]?.value
+          .toLowerCase()
+          .includes("reserved"))
     ) {
       return true;
     }
@@ -74,6 +85,9 @@ const AllWorkStations = () => {
     currentPage * itemsPerPage
   );
 
+  console.log(paginatedData);
+
+  // change current page
   const handlePageChange = (event, newPage) => {
     setCurrentPage(newPage);
   };
@@ -83,11 +97,21 @@ const AllWorkStations = () => {
       try {
         const fetchedData = [];
 
+        // fetch data
+        const response = await axios.get(baseURL);
+        const response_data = response.data;
+
         for (let i = 0; i < zone_array.length; i++) {
-          const response = await fetch(`${baseURL}/zone_${zone_array[i]}s`);
-          const zone_data = await response.json();
+          const zone_data = response_data.filter(
+            (asset) =>
+              asset.custom_fields["Building Zone"]?.value
+                .slice(-1)
+                .toLowerCase() === zone_array[i]
+          );
+
           fetchedData.push(...zone_data);
         }
+        console.log(fetchedData);
         setData((prevData) => [...prevData, ...fetchedData]);
         setLoading(false);
       } catch (error) {

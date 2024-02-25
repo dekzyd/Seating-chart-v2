@@ -44,10 +44,19 @@ const Zone = () => {
 
     // Include filtered item in the filtered data
     if (
-      (filters.occupied && desk.status.toLowerCase() === "occupied") ||
-      (filters.vacant && desk.status.toLowerCase() === "vacant") ||
-      (filters.damaged && desk.status.toLowerCase() === "damaged") ||
-      (filters.reserved && desk.status.toLowerCase().includes("reserved"))
+      (filters.occupied &&
+        desk.custom_fields["Workspace-Status"]?.value.toLowerCase() ===
+          "occupied") ||
+      (filters.vacant &&
+        desk.custom_fields["Workspace-Status"]?.value.toLowerCase() ===
+          "vacant") ||
+      (filters.damaged &&
+        desk.custom_fields["Workspace-Status"]?.value.toLowerCase() ===
+          "damaged") ||
+      (filters.reserved &&
+        desk.custom_fields["Workspace-Status"]?.value
+          .toLowerCase()
+          .includes("reserved"))
     ) {
       return true;
     }

@@ -1,26 +1,21 @@
+/* eslint-disable react/prop-types */
 import Desk_icon from "./Desk_icon";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "./Context";
-import { toast } from "react-toastify";
 
 const Desk = ({ data, style }) => {
   const navigate = useNavigate();
-  const { current_user, searchedDesk } = useGlobalContext();
-  const { status, desk_id, id } = data;
-  const first_char = desk_id.charAt(0).toLowerCase();
+  const { searchedDesk } = useGlobalContext();
+  const data_id = data?.id;
+  const status = data?.custom_fields["Workspace-Status"]?.value;
+  const desk_id = data?.custom_fields["Workspace"]?.value;
+
+  const first_char = desk_id?.charAt(0).toLowerCase();
   return (
     <div
       className="desk mb-[-6px] cursor-pointer hover:font-bold"
-      // onClick={() => {
-      //   if (current_user?.admin !== undefined) {
-      //     navigate(`/edit/zone_${first_char}s/${id}`);
-      //   } else {
-      //     toast.error("Login as Admin to Edit");
-      //   }
-      // }}
-
       onClick={() => {
-        navigate(`/edit/zone_${first_char}s/${id}`);
+        navigate(`/edit/zone_${first_char}s/${data_id}`);
       }}
     >
       {searchedDesk === desk_id ? (

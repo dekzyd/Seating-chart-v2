@@ -364,11 +364,12 @@ const AppContext = (props) => {
     fetchData();
   }, [refresh]);
 
-  // console.log(data);
+  console.log(data);
 
   return (
     <GlobalContext.Provider
       value={{
+        baseURL,
         zones_d,
         all_zones,
         data,

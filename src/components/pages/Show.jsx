@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import axios from "axios";
 import { useGlobalContext } from "../Context";
 import Loading from "../Loading";
 import DeskSVG from "../DeskSVG";
@@ -19,48 +19,22 @@ const Show = () => {
     baseURL,
   } = useGlobalContext();
 
-  const url = `${baseURL}/${zone}/${id}.json`;
+  const url = `${baseURL}/${id}`;
 
   let zone_name = zone.slice(0, -1);
-  // console.log(zone_name.charAt(5));
   const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const token = document.querySelector('meta[name="csrf-token"]').content;
-    const updatedData = {
-      desk_id: data.desk_id,
-      status: data.status,
-      campaign: data.campaign,
-    };
-
-    try {
-      const response = await fetch(url, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": token,
-        },
-        body: JSON.stringify(updatedData),
-      });
-      console.log(JSON.stringify(updatedData));
-      setRefresh(!refresh);
-      toast.success(`${data.desk_id} updated successfully.`);
-    } catch (error) {
-      toast.error("Network response was not ok");
-      console.log(error);
-    }
-  };
 
   // get desk details
   useEffect(() => {
     setActiveSideNav("zones");
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
-        const zones = await response.json();
-        console.log(zones);
-        setData(zones);
+        const response = await axios.get(url);
+        console.log(response);
+        const desk_id = response.data.custom_fields.Workspace.value;
+        const status = response.data.custom_fields["Workspace-Status"]?.value;
+        const campaign = response.data.custom_fields.Campaign.value;
+        setData({ id, desk_id, status, campaign });
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -129,46 +103,23 @@ const Show = () => {
             required
           />
         </div>
+
         <div>
           <label
             htmlFor="status"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900"
           ></label>
-          <select
+          <input
+            type="string"
             id="status"
-            value={
-              acceptedItReserved.includes(data.status.toLowerCase())
-                ? "Reserved IT"
-                : acceptedOpsReserved.includes(data.status.toLowerCase())
-                ? "Reserved Ops"
-                : acceptedDevReserved.includes(data.status.toLowerCase())
-                ? "Reserved Dev"
-                : data.status.toLowerCase() === "occupied"
-                ? "Occupied"
-                : data.status.toLowerCase() === "vacant"
-                ? "Vacant"
-                : data.status.toLowerCase() === "damaged"
-                ? "Damaged"
-                : ""
-            }
+            value={data.status}
             onChange={(e) => {
               console.log(e.target.value);
-              // if (e.target.value.toLowerCase() == "vacant") {
-              //   setData({ ...data, status: e.target.value.toLowerCase() });
-              //   setData({ ...data, campaign: '' });
-              // }
-              setData({ ...data, status: e.target.value.toLowerCase() });
+              setData({ ...data, campaign: e.target.value });
             }}
-            className="mb-5 bg-gray-50 border border-sky-300 text-gray-500 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-1/3 p-2.5 mx-auto focus:outline-none "
-          >
-            <option>Select status...</option>
-            <option>Occupied</option>
-            <option>Damaged</option>
-            <option>Vacant</option>
-            <option>Reserved IT</option>
-            <option>Reserved Ops</option>
-            <option>Reserved Dev</option>
-          </select>
+            className="mb-5 bg-gray-50 border border-sky-300 text-gray-500 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-1/3 p-2.5 mx-auto focus:outline-none"
+            required
+          />
         </div>
         <div>
           <label
@@ -186,15 +137,6 @@ const Show = () => {
             className="mb-5 bg-gray-50 border border-sky-300 text-gray-500 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-1/3 p-2.5 mx-auto focus:outline-none"
             required
           />
-        </div>
-        <div className="text-center pt-4">
-          <button
-            type="submit"
-            onClick={handleSubmit}
-            className="text-white bg-sky-300 hover:bg-sky-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
-          >
-            Update
-          </button>
         </div>
       </form>
     </div>

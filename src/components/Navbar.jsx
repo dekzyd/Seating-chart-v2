@@ -6,14 +6,13 @@ import logo from "../images/newlogo.png";
 const zones = ["d", "e", "h", "i", "j", "k", "l", "m", "n", "q", "r"];
 
 const Navbar = () => {
-  const { setSearchedDesk } = useGlobalContext();
+  const { setSearchedDesk, baseURL } = useGlobalContext();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
   const [show, setShow] = useState(false);
   const dropdownRef = useRef(null);
   const searchfieldRef = useRef(null);
-  const baseURL = "http://localhost:3000";
 
   const handleSearchChange = (e) => {
     setQuery(e.target.value);
