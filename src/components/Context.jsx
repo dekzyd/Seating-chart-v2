@@ -144,14 +144,19 @@ const AppContext = (props) => {
   };
 
   // sorter function
-  const sorter = (array) => {
+  const sorter = (array, order) => {
     let sortedArray = [];
 
     // Custom comparison function for sorting by workspace value
     function compareByWorkspace(a, b) {
       const workspaceA = a.custom_fields.Workspace.value;
       const workspaceB = b.custom_fields.Workspace.value;
-      return workspaceA < workspaceB ? -1 : workspaceA > workspaceB ? 1 : 0;
+      if (order == "desc") {
+        return workspaceA > workspaceB ? -1 : workspaceA < workspaceB ? 1 : 0;
+      }
+      if (order == "asc") {
+        return workspaceA < workspaceB ? -1 : workspaceA > workspaceB ? 1 : 0;
+      }
     }
 
     sortedArray = array.sort(compareByWorkspace);
@@ -228,7 +233,7 @@ const AppContext = (props) => {
         );
 
         //sort floor_data in asc order
-        sorter(floor_data);
+        sorter(floor_data, "asc");
 
         // set floor 2 zones data
         setData((prevData) => ({
@@ -390,6 +395,7 @@ const AppContext = (props) => {
   return (
     <GlobalContext.Provider
       value={{
+        sorter,
         baseURL,
         zones_d,
         all_zones,

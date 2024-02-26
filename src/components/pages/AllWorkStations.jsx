@@ -11,7 +11,7 @@ const floor_2_zones = ["d", "e", "h", "i"];
 const floor_3_zones = ["j", "k", "l", "m", "n", "q", "r"];
 
 const AllWorkStations = () => {
-  const { zones_d } = useGlobalContext();
+  const { sorter } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
@@ -85,8 +85,6 @@ const AllWorkStations = () => {
     currentPage * itemsPerPage
   );
 
-  console.log(paginatedData);
-
   // change current page
   const handlePageChange = (event, newPage) => {
     setCurrentPage(newPage);
@@ -108,7 +106,8 @@ const AllWorkStations = () => {
                 .slice(-1)
                 .toLowerCase() === zone_array[i]
           );
-
+          // sort zone_data
+          sorter(zone_data, "asc");
           fetchedData.push(...zone_data);
         }
         console.log(fetchedData);
