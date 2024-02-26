@@ -26,10 +26,6 @@ const Zones = () => {
         <ZoneBox zone="All Working Stations" />
       </div>
     </div>
-    // <div>
-    //   {zonesData &&
-    //     zonesData.map((asset) => <div key={asset.id}>{asset.id}</div>)}
-    // </div>
   );
 };
 

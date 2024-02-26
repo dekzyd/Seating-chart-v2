@@ -83,7 +83,7 @@ const Navbar = () => {
     data.map((desk) => {
       searchData.push({
         key: `${desk.custom_fields["Workspace"]?.value.toLowerCase()}`,
-        value: desk.custom_fields["Workspace"]?.value.toLowerCase(),
+        value: desk.custom_fields["Workspace"]?.value,
         id: desk?.id,
       });
     });
@@ -156,7 +156,7 @@ const Navbar = () => {
                     value={query}
                     onChange={handleSearchChange}
                     placeholder="Search Desk_ID"
-                    className="bg-gray-50 border outline-sky-300 border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-gray-900 text-sm rounded rounded-r-full block w-full py-1 px-2.5"
+                    className="bg-gray-50 border outline-sky-300 border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-gray-900 text-sm rounded  block w-full py-1 px-2.5"
                   />
                   <button
                     type="button"
@@ -164,7 +164,7 @@ const Navbar = () => {
                       setQuery("");
                       setSearchedDesk("");
                     }}
-                    className=" absolute inset-y-0 right-0 flex items-center pr-1 bg-sky-200 hover:bg-sky-300 rounded-r-full"
+                    className=" absolute inset-y-0 right-0 flex items-center pr-1 bg-sky-200 hover:bg-sky-300 rounded-r"
                   >
                     <svg
                       className="w-7 h-7 text-gray-500 hover:text-gray-900 pl-1"
