@@ -143,6 +143,22 @@ const AppContext = (props) => {
     r: [],
   };
 
+  // sorter function
+  const sorter = (array) => {
+    let sortedArray = [];
+
+    // Custom comparison function for sorting by workspace value
+    function compareByWorkspace(a, b) {
+      const workspaceA = a.custom_fields.Workspace.value;
+      const workspaceB = b.custom_fields.Workspace.value;
+      return workspaceA < workspaceB ? -1 : workspaceA > workspaceB ? 1 : 0;
+    }
+
+    sortedArray = array.sort(compareByWorkspace);
+
+    console.log(sortedArray);
+  };
+
   const acceptedItReserved = ["reserved (it)", "reserved it"];
   const acceptedDevReserved = ["reserved (dev)", "reserved dev"];
   const acceptedOpsReserved = ["reserved (ops)", "reserved ops"];
@@ -188,6 +204,7 @@ const AppContext = (props) => {
               .slice(-1)
               .toLowerCase() === floor_2_zones[i]
         );
+        console.log(floor_data);
         // get occupied, vacant, damaged and reserved data in each floor 2 zone
         let occupied = floor_data.filter(
           (asset) =>
@@ -210,11 +227,15 @@ const AppContext = (props) => {
             .includes("reserved")
         );
 
+        //sort floor_data in asc order
+        sorter(floor_data);
+
         // set floor 2 zones data
         setData((prevData) => ({
           ...prevData,
           zone_data: {
             ...prevData.zone_data,
+            // each zone gets its data
             [floor_2_zones[i]]: floor_data,
           },
           floor_2: {
