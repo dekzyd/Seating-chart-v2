@@ -170,7 +170,7 @@
         },
         "Workspace-Status": {
           "field": "_snipeit_workspace_status_18",
-          "value": "Vacant",
+          "value": "Occupied",
           "field_format": "ANY",
           "element": "listbox"
         },

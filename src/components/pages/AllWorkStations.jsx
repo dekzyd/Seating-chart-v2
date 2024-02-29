@@ -134,6 +134,7 @@ const AllWorkStations = () => {
           ? "Floor 3 Workstations"
           : "All Workstations"}
       </p>
+
       <div className="absolute top-20 text-center right-4">
         <i className=" font-bold mb-4">Filter Result</i>
         <fieldset className="flex gap-2">

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Loading from "../Loading";
 import {
@@ -23,8 +25,18 @@ ChartJS.register(
 );
 
 const Home = () => {
-  const { data, loading, setActiveSideNav, floor_2_zones, floor_3_zones } =
-    useGlobalContext();
+  const {
+    data,
+    isLoading,
+    isFetching,
+    getData,
+    loading,
+    baseURL,
+    rq_data,
+    setActiveSideNav,
+    floor_2_zones,
+    floor_3_zones,
+  } = useGlobalContext();
 
   // set active sidebar
   useEffect(() => {
@@ -219,12 +231,17 @@ const Home = () => {
     // animation: false,
   };
 
-  if (loading) {
+  if (isLoading) {
     return <Loading />;
   }
 
+  if (isFetching) {
+    return <p>is fetching</p>;
+  }
+
   return (
-    <div className="flex flex-col h-full py-2">
+    <div className="flex flex-col h-full py-2 ">
+      <button onFocus={() => getData()}>fetch</button>
       {/* Floor 2 */}
       <div className="text-center">
         <div className="">
@@ -474,6 +491,14 @@ const Home = () => {
         </div>
       </div>
     </div>
+    // <div>
+    //   {rq_data.map((asset, index) => (
+    //     <p key={index}>
+    //       ID: {asset.id} Status:{" "}
+    //       {asset.custom_fields["Workspace-Status"]?.value}
+    //     </p>
+    //   ))}
+    // </div>
   );
 };
 
