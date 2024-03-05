@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Desk from "../../Desk";
 import { Link } from "react-router-dom";
 
@@ -6,7 +6,7 @@ const I_ZoneChart = ({ data }) => {
   return (
     <div>
       <div className="ZoneI border-2 m-2 border-slate-400 rounded p-2 mx-auto my-0 w-[800px] grid grid-cols-17 grid-rows-11 gap-2.5 text-center">
-        <div className="zoneh grid place-items-center bg-[#e9f9fd] rounded-sm col-start-1 col-end-2 row-start-1 row-end-12">
+        <div className="zoneh grid place-items-center bg-[#e9f9fd] rounded-sm col-start-1 col-end-3 row-start-1 row-end-12">
           {/* Zone H */}
           <Link to={"/zones/zone_hs"}>
             <div>
@@ -17,7 +17,6 @@ const I_ZoneChart = ({ data }) => {
                 viewBox="0 0 24 24"
                 id="left-arrow"
                 xmlns="http://www.w3.org/2000/svg"
-                // className="icon line"
               >
                 <path
                   id="primary"
@@ -96,10 +95,9 @@ const I_ZoneChart = ({ data }) => {
           </div>
         </div>
         {/* Desk_id: #53-64?? */}
-        <div className="ocpd4  col-start-2 col-end-9 row-start-4 row-end-6 flex flex-col place-content-center">
+        <div className="ocpd4 col-start-2 col-end-8 row-start-4 row-end-6 flex flex-col place-content-center">
           {/* occupied4 */}
-          <div className="flex flex-row -scale-y-100 place-content-start">
-            <Desk data={data[24]} style="-scale-x-100" />
+          <div className="flex flex-row -scale-y-100 place-content-end">
             <Desk data={data[52]} style="-scale-x-100" />
             <Desk data={data[53]} style="-scale-x-100" />
             <Desk data={data[54]} style="-scale-x-100" />
@@ -107,8 +105,7 @@ const I_ZoneChart = ({ data }) => {
             <Desk data={data[56]} style="-scale-x-100" />
             <Desk data={data[57]} style="-scale-x-100" />
           </div>
-          <div className="flex flex-row place-content-start">
-            <Desk data={data[24]} />
+          <div className="flex flex-row place-content-end">
             <Desk data={data[63]} />
             <Desk data={data[62]} />
             <Desk data={data[61]} />
