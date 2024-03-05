@@ -3,12 +3,12 @@ import Desk_icon from "./Desk_icon";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "./Context";
 
-const Desk = ({ data, style }) => {
+const Desk = ({ data, style, desk_id }) => {
   const navigate = useNavigate();
   const { searchedDesk } = useGlobalContext();
   const data_id = data?.id;
   const status = data?.custom_fields["Workspace-Status"]?.value;
-  const desk_id = data?.custom_fields["Workspace"]?.value;
+  // const desk_id = data?.custom_fields["Workspace"]?.value;
 
   const first_char = desk_id?.charAt(0).toLowerCase();
   return (

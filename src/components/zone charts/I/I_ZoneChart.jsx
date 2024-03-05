@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import Desk from "../../Desk";
 import { Link } from "react-router-dom";
 
 const I_ZoneChart = ({ data }) => {
+  console.log(data);
   return (
     <div>
       <div className="ZoneI border-2 m-2 border-slate-400 rounded p-2 mx-auto my-0 w-[800px] grid grid-cols-17 grid-rows-11 gap-2.5 text-center">
@@ -217,16 +217,16 @@ const I_ZoneChart = ({ data }) => {
           {/* occupied8 */}
           <div className="flex flex-col">
             <div className="rotate-90">
-              <Desk data={data[0]} />
+              <Desk data={data[0]} desk_id="I0001" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[1]} />
+              <Desk data={data[1]} desk_id="I0002" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[2]} />
+              <Desk data={data[2]} desk_id="I0003" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[3]} />
+              <Desk data={data[3]} desk_id="I0004" />
             </div>
           </div>
           <div className="flex flex-col">
