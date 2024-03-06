@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Desk from "../../Desk";
 import { Link } from "react-router-dom";
 
@@ -13,76 +12,76 @@ const H_ZoneChart = ({ data }) => {
         <div className="ocpd1  col-start-5 col-end-7 row-start-1 row-end-9 flex justify-center">
           <div className="flex flex-col">
             <div className="rotate-90">
-              <Desk data={data[21]} />
+              <Desk data={data} desk_id="H0022" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[20]} />
+              <Desk data={data} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[19]} />
+              <Desk data={data[19]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[18]} />
+              <Desk data={data[18]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[17]} />
+              <Desk data={data[17]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[16]} />
+              <Desk data={data[16]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[15]} />
+              <Desk data={data[15]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[14]} />
+              <Desk data={data[14]} desk_id="H0021" />
             </div>
           </div>
           <div className="flex flex-col">
             <div className="-rotate-90">
-              <Desk data={data[22]} />
+              <Desk data={data[22]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[23]} />
+              <Desk data={data[23]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[24]} />
+              <Desk data={data[24]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[25]} />
+              <Desk data={data[25]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[26]} />
+              <Desk data={data[26]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[27]} />
+              <Desk data={data[27]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[28]} />
+              <Desk data={data[28]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[29]} />
+              <Desk data={data[29]} desk_id="H0021" />
             </div>
           </div>
         </div>
         {/* Desk_id: #34-31 */}
         <div className="ocpd3  col-start-8 col-end-9 row-start-3 row-end-9 flex flex-col place-items-center">
           <div className="rotate-90">
-            <Desk data={data[35]} />
+            <Desk data={data[35]} desk_id="H0021" />
           </div>
           <div className="rotate-90">
-            <Desk data={data[34]} />
+            <Desk data={data[34]} desk_id="H0021" />
           </div>
           <div className="rotate-90">
-            <Desk data={data[33]} />
+            <Desk data={data[33]} desk_id="H0021" />
           </div>
           <div className="rotate-90">
-            <Desk data={data[32]} />
+            <Desk data={data[32]} desk_id="H0021" />
           </div>
           <div className="rotate-90">
-            <Desk data={data[31]} />
+            <Desk data={data[31]} desk_id="H0021" />
           </div>
           <div className="rotate-90">
-            <Desk data={data[30]} />
+            <Desk data={data[30]} desk_id="H0021" />
           </div>
         </div>
         <div className="zonei rounded-sm grid place-items-center bg-[#e9f9fd] col-start-9 col-end-11 row-start-1 row-end-9">
@@ -128,48 +127,48 @@ const H_ZoneChart = ({ data }) => {
         <div className="ocpd4  col-start-2 col-end-4 row-start-2 row-end-9 flex justify-center">
           <div className="flex flex-col">
             <div className="rotate-90">
-              <Desk data={data[6]} />
+              <Desk data={data[6]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[5]} />
+              <Desk data={data[5]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[4]} />
+              <Desk data={data[4]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[3]} />
+              <Desk data={data[3]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[2]} />
+              <Desk data={data[2]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[1]} />
+              <Desk data={data[1]} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[0]} />
+              <Desk data={data[0]} desk_id="H0021" />
             </div>
           </div>
           <div className="flex flex-col">
             <div className="-rotate-90">
-              <Desk data={data[7]} />
+              <Desk data={data[7]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[8]} />
+              <Desk data={data[8]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[9]} />
+              <Desk data={data[9]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[10]} />
+              <Desk data={data[10]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[11]} />
+              <Desk data={data[11]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[12]} />
+              <Desk data={data[12]} desk_id="H0021" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[13]} />
+              <Desk data={data[13]} desk_id="H0021" />
             </div>
           </div>
         </div>

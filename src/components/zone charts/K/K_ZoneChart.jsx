@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Desk from "../../Desk";
 import { Link } from "react-router-dom";
 
@@ -11,48 +10,48 @@ const K_ZoneChart = ({ data }) => {
           {/* occupied1 */}
           <div className="flex flex-col">
             <div className="rotate-90">
-              <Desk data={data[7]} />
+              <Desk data={data} desk_id="K0008" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[8]} />
+              <Desk data={data} desk_id="K0009" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[9]} />
+              <Desk data={data} desk_id="K0010" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[10]} />
+              <Desk data={data} desk_id="K0011" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[11]} />
+              <Desk data={data} desk_id="K0012" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[12]} />
+              <Desk data={data} desk_id="K0013" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[13]} />
+              <Desk data={data} desk_id="K0014" />
             </div>
           </div>
           <div className="flex flex-col">
             <div className="-rotate-90">
-              <Desk data={data[6]} />
+              <Desk data={data} desk_id="K0007" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[5]} />
+              <Desk data={data} desk_id="K0006" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[4]} />
+              <Desk data={data} desk_id="K0005" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[3]} />
+              <Desk data={data} desk_id="K0004" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[2]} />
+              <Desk data={data} desk_id="K0003" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[1]} />
+              <Desk data={data} desk_id="K0002" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[0]} />
+              <Desk data={data} desk_id="K0001" />
             </div>
           </div>
         </div>
@@ -61,36 +60,36 @@ const K_ZoneChart = ({ data }) => {
           {/* occupied2 */}
           <div className="flex flex-col">
             <div className="rotate-90">
-              <Desk data={data[19]} />
+              <Desk data={data} desk_id="K0020" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[20]} />
+              <Desk data={data} desk_id="K0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[21]} />
+              <Desk data={data} desk_id="K0022" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[22]} />
+              <Desk data={data} desk_id="K0023" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[23]} />
+              <Desk data={data} desk_id="K0024" />
             </div>
           </div>
           <div className="flex flex-col">
             <div className="-rotate-90">
-              <Desk data={data[18]} />
+              <Desk data={data} desk_id="K0019" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[17]} />
+              <Desk data={data} desk_id="K0018" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[16]} />
+              <Desk data={data} desk_id="K0017" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[15]} />
+              <Desk data={data} desk_id="K0016" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[14]} />
+              <Desk data={data} desk_id="K0015" />
             </div>
           </div>
         </div>

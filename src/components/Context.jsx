@@ -171,7 +171,6 @@ const AppContext = (props) => {
   const getData = async () => {
     const response = await axios.get(baseURL);
     const response_data = response.data;
-    console.log("i'm getData");
 
     const fetchData = async () => {
       const f2fetchedData = [];
@@ -185,6 +184,7 @@ const AppContext = (props) => {
               .slice(-1)
               .toLowerCase() === all_zones[i]
         );
+        // console.log(zone_data);
         zones_d[all_zones[i]] = zone_data;
       }
 
@@ -197,6 +197,7 @@ const AppContext = (props) => {
               .toLowerCase() === floor_2_zones[i]
         );
         // console.log(floor_data);
+
         // get occupied, vacant, damaged and reserved data in each floor 2 zone
         let occupied = floor_data.filter(
           (asset) =>
@@ -388,9 +389,6 @@ const AppContext = (props) => {
     queryFn: getData,
     refetchInterval: 1000 * 60,
   });
-
-  console.log("load", isLoading);
-  console.log("fetch", isFetching);
 
   // useEffect(() => {
   //   const fetchData = async () => {

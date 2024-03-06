@@ -6,9 +6,16 @@ import { useGlobalContext } from "./Context";
 const Desk = ({ data, style, desk_id }) => {
   const navigate = useNavigate();
   const { searchedDesk } = useGlobalContext();
-  const data_id = data?.id;
-  const status = data?.custom_fields["Workspace-Status"]?.value;
-  // const desk_id = data?.custom_fields["Workspace"]?.value;
+
+  const filtered_data = data.filter(
+    (desk) => desk?.custom_fields["Workspace"]?.value === desk_id
+  );
+
+  const workspace_data = filtered_data[0];
+
+  const data_id = workspace_data?.id;
+  const status = workspace_data?.custom_fields["Workspace-Status"]?.value;
+  const data_desk_id = workspace_data?.custom_fields["Workspace"]?.value;
 
   const first_char = desk_id?.charAt(0).toLowerCase();
   return (
@@ -18,11 +25,12 @@ const Desk = ({ data, style, desk_id }) => {
         navigate(`/edit/zone_${first_char}s/${data_id}`);
       }}
     >
-      {searchedDesk === desk_id ? (
+      {data_desk_id === desk_id && searchedDesk === desk_id ? (
         <Desk_icon status={status} searchedDesk={true} />
       ) : (
         <Desk_icon status={status} />
       )}
+
       <p
         className={`${style} text-xs font-sans text-slate-500 text-center tracking-wide`}
       >

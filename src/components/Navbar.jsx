@@ -68,7 +68,7 @@ const Navbar = () => {
           );
           fetchedData.push(...zone_data);
         }
-        console.log(fetchedData);
+        // console.log(fetchedData);
         setData((prevData) => [...prevData, ...fetchedData]);
       } catch (error) {
         console.log(error);
