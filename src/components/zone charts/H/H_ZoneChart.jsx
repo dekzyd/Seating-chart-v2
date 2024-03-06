@@ -18,70 +18,70 @@ const H_ZoneChart = ({ data }) => {
               <Desk data={data} desk_id="H0021" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[19]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0020" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[18]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0019" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[17]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0018" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[16]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0017" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[15]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0016" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[14]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0015" />
             </div>
           </div>
           <div className="flex flex-col">
             <div className="-rotate-90">
-              <Desk data={data[22]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0023" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[23]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0024" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[24]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0025" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[25]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0026" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[26]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0027" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[27]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0028" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[28]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0029" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[29]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0030" />
             </div>
           </div>
         </div>
         {/* Desk_id: #34-31 */}
         <div className="ocpd3  col-start-8 col-end-9 row-start-3 row-end-9 flex flex-col place-items-center">
           <div className="rotate-90">
-            <Desk data={data[35]} desk_id="H0021" />
+            <Desk data={data} desk_id="H0036" />
           </div>
           <div className="rotate-90">
-            <Desk data={data[34]} desk_id="H0021" />
+            <Desk data={data} desk_id="H0035" />
           </div>
           <div className="rotate-90">
-            <Desk data={data[33]} desk_id="H0021" />
+            <Desk data={data} desk_id="H0034" />
           </div>
           <div className="rotate-90">
-            <Desk data={data[32]} desk_id="H0021" />
+            <Desk data={data} desk_id="H0033" />
           </div>
           <div className="rotate-90">
-            <Desk data={data[31]} desk_id="H0021" />
+            <Desk data={data} desk_id="H0032" />
           </div>
           <div className="rotate-90">
-            <Desk data={data[30]} desk_id="H0021" />
+            <Desk data={data} desk_id="H0031" />
           </div>
         </div>
         <div className="zonei rounded-sm grid place-items-center bg-[#e9f9fd] col-start-9 col-end-11 row-start-1 row-end-9">
@@ -127,48 +127,48 @@ const H_ZoneChart = ({ data }) => {
         <div className="ocpd4  col-start-2 col-end-4 row-start-2 row-end-9 flex justify-center">
           <div className="flex flex-col">
             <div className="rotate-90">
-              <Desk data={data[6]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0007" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[5]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0006" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[4]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0005" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[3]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0004" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[2]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0003" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[1]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0002" />
             </div>
             <div className="rotate-90">
-              <Desk data={data[0]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0001" />
             </div>
           </div>
           <div className="flex flex-col">
             <div className="-rotate-90">
-              <Desk data={data[7]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0008" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[8]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0009" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[9]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0010" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[10]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0011" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[11]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0012" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[12]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0013" />
             </div>
             <div className="-rotate-90">
-              <Desk data={data[13]} desk_id="H0021" />
+              <Desk data={data} desk_id="H0014" />
             </div>
           </div>
         </div>
